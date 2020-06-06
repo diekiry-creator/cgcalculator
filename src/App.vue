@@ -15,9 +15,7 @@
          </v-list-item>
 
          <v-divider></v-divider>
-
          <v-list dense nav>
-
            <v-list-item link to="/">
            <v-list-item-icon>
              <v-icon>mdi-home</v-icon>
@@ -51,20 +49,35 @@
 </template>
 
 <script>
-
+    import axios from 'axios'
 export default {
   name: 'App',
   components: {
-
   },
-
   data: () => ({
-    items: [
-      { id: '1', title: 'Task 1' },
-      { id: '2', title: 'Task 2' },
-      { id: '3', title: 'Task 3' },
-    ],
+    items: [],
     right: null,
+      loaded: true,
+      showError: false,
+      errorMessage: 'Please enter a package name'
   }),
+
+    methods:{
+        requestData() {
+            this.loaded = false
+            axios.get('http://192.168.1.159:8082/task')
+                .then(response => {
+                    this.items = response.data
+                    this.loaded = true
+                })
+                .catch(err => {
+                    err.data
+                    this.showError = true
+                })
+        }
+    },
+    mounted () {
+        this.requestData()
+    }
 };
 </script>
