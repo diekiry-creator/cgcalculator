@@ -4,6 +4,10 @@ import { Line } from "vue-chartjs";
 export default {
   extends: Line,
   props: {
+  label: {
+    type: Array,
+    default: null
+  },
   labels: {
     type: Array,
     default: null
@@ -14,13 +18,21 @@ export default {
   }
 },
 
+data: () => ({
+  labelsName: [],
+}),
+
   mounted() {
+  var index;
+  for (index = 1; index <= this.labels.length; ++index) {
+    this.labelsName.push('Опыт ' + index)
+  }
     this.renderChart(
       {
-        labels: this.labels,
+        labels: this.labelsName,
         datasets: [
           {
-            label: "Data 1",
+            label: this.label,
             data: this.data,
             backgroundColor: "transparent",
             borderColor: "rgba(1, 116, 188, 0.50)",
@@ -31,10 +43,6 @@ export default {
       {
         responsive: true,
         maintainAspectRatio: false,
-        title: {
-          display: true,
-          text: "My Data"
-        }
       }
     );
   }

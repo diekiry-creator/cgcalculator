@@ -96,7 +96,7 @@
 
     <h1 v-if="loaded">Расчеты</h1>
     <v-text-field v-if="loaded" v-model="postItem.strenght" label="Пластическая прочность"></v-text-field>
-    <line-chart v-if="loaded" :labels="postItem.humidity" :data="postItem.strenght"></line-chart>
+    <line-chart v-if="loaded" :label="resultName" :labels="postItem.humidity" :data="postItem.strenght"></line-chart>
 
   </v-container>
 </template>
@@ -120,7 +120,7 @@
 
     data: () => ({
       loaded: false,
-
+      resultName: "Пластическая прочность",
       postItem: {
         depth: [],
         humidity: [],
