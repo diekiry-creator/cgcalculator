@@ -3,28 +3,25 @@ import { Line } from "vue-chartjs";
 
 export default {
   extends: Line,
+  props: {
+  labels: {
+    type: Array,
+    default: null
+  },
+  data: {
+    type: Array,
+    default: null
+  }
+},
+
   mounted() {
     this.renderChart(
       {
-        labels: [
-          1,
-          1.5,
-          3,
-          4,
-          8.8,
-          10,
-          11
-        ],
+        labels: this.labels,
         datasets: [
           {
             label: "Data 1",
-            data: [
-             { x: 0, y: 300 },
-             { x: 1, y: 223 },
-             { x: 2, y: 450 },
-             { x: 3, y: 750 },
-             { x: 4, y: 888 }
-            ],
+            data: this.data,
             backgroundColor: "transparent",
             borderColor: "rgba(1, 116, 188, 0.50)",
             pointBackgroundColor: "rgba(171, 71, 188, 1)"
