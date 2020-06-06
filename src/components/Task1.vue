@@ -1,6 +1,6 @@
 <template>
   <v-container height="100vh" width="auto">
-    <h1>Task1</h1>
+    <h1>{{query}}</h1>
 
     <v-text-field
            v-model="postItem.weignt"
@@ -94,7 +94,8 @@
     <v-btn class="ma-2" tile color="success" dark @click="requestData">Рассчитать</v-btn>
     <v-btn class="ma-2" tile outlined color="success">Очистить</v-btn>
 
-   <p>{{postItem}}</p>
+    <h1 v-if="loaded">Расчеты</h1>
+    <v-text-field v-if="loaded" v-model="postItem.strenght" label="Пластическая прочность"></v-text-field>
     <line-chart v-if="loaded" :labels="postItem.humidity" :data="postItem.strenght"></line-chart>
 
   </v-container>
@@ -107,6 +108,12 @@
 
   export default {
     name: 'Task1',
+    props: {
+    query: {
+      type: String,
+      default: null
+    },
+  },
     components: {
           LineChart
         },
@@ -170,6 +177,11 @@
     },
 
     methods: {
+      taskTitle(id) {
+        let item  = this.items.find((item) => item.id == id)
+        return item.title
+
+    },
     requestData () {
       this.loaded = false
       axios.post('http://192.168.1.159:8082/task/1/calculate', this.postItem)

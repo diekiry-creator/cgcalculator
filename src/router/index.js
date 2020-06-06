@@ -16,17 +16,20 @@ Vue.use(VueRouter)
   {
     path: '/task1',
     name: 'Task1',
-    component: Task1
+    component: Task1,
+    props: (route) => ({ query: route.query.q })
   },
   {
     path: '/task2',
     name: 'Task2',
-    component: Task2
+    component: Task2,
+    props: (route) => ({ query: route.query.q })
   },
   {
     path: '/task3',
     name: 'Task3',
-    component: Task3
+    component: Task3,
+    props: (route) => ({ query: route.query.q })
   }
 ]
 

@@ -1,7 +1,7 @@
 <template>
   <v-app>
-  <div class="d-flex align-stretch">
-  <v-navigation-drawer height="100vh" width="auto" permanent>
+  <div style="height:100%; width:auto" class="d-flex align-stretch">
+  <v-navigation-drawer height="100%" width="auto" permanent>
          <v-list-item>
            <v-list-item-content>
              <v-list-item-title class="title d-flex align-center">
@@ -29,7 +29,7 @@
              v-for="item in items"
              :key="item.id"
              link
-             :to="'task' + item.id"
+             :to="'task' + item.id + '?q=' + item.title"
            >
              <v-list-item-icon>
                <v-icon>mdi-chevron-right</v-icon>
