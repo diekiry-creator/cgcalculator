@@ -65,7 +65,7 @@ export default {
     methods:{
         requestData() {
             this.loaded = false
-            axios.get('http://192.168.1.159:8082/task')
+            axios.get('http://localhost:8082/task')
                 .then(response => {
                     this.items = response.data
                     this.loaded = true
