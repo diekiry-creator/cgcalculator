@@ -1,6 +1,7 @@
 <template lang="html">
   <v-container height="100vh" width="auto">
     <h1>{{query}}</h1>
+    <v-divider></v-divider>
     <div class="component-wrapper">
       <GChart
               type="LineChart"
@@ -38,8 +39,11 @@
         }
       }
     }),
-  components: {
-    GChart
+    components: {
+      GChart
+    },
+    methods: {
+
     }
   }
 

@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Main from '../components/Main.vue'
-import Task1 from '../components/Task1.vue'
-import Task2 from '../components/Task2.vue'
-import Task3 from '../components/Task3.vue'
+import Main from '../pages/Main.vue'
+import Task1 from '../pages/Task1.vue'
+import Task2 from '../pages/Task2.vue'
+import Task3 from '../pages/Task3.vue'
+import Task4 from '../pages/Task4.vue'
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,12 @@ Vue.use(VueRouter)
     path: '/task3',
     name: 'Task3',
     component: Task3,
+    props: (route) => ({ query: route.query.q })
+  },
+  {
+    path: '/task4',
+    name: 'Task4',
+    component: Task4,
     props: (route) => ({ query: route.query.q })
   }
 ]
