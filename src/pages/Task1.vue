@@ -246,7 +246,7 @@
                     this.postItem.depth.push(this.experiments[index].depth)
                 }
                 this.loaded = false
-                axios.post('http://localhost:8082/task/1/calculate', this.postItem)
+                axios.post('http://192.168.1.159:8082/task/1/calculate', this.postItem)
                     .then(response => {
                         this.postItem.strenght = response.data.strenght
                         this.loaded = true
