@@ -30,9 +30,7 @@
 <script>
   export default {
     name: 'Main',
-
     data: () => ({
-    //
     }),
   }
 </script>
